@@ -15,11 +15,19 @@ var commentRoutes = require("./routes/comments"),
 	indexRoutes = require("./routes/index")
 
 var mongoose = require("mongoose");
- mongoose.set('useNewUrlParser', true);
- mongoose.set('useFindAndModify', false);
- mongoose.set('useCreateIndex', true);
- mongoose.set('useUnifiedTopology', true);
- mongoose.connect("mongodb://localhost/yelp_camp");    //will make name_of_database if it doesn't already exist.
+ // mongoose.set('useNewUrlParser', true);
+ // mongoose.set('useFindAndModify', false);
+ // mongoose.set('useCreateIndex', true);
+ // mongoose.set('useUnifiedTopology', true);
+ // mongoose.connect("mongodb://localhost/yelp_camp");    //will make name_of_database if it doesn't already exist.
+ mongoose.connect('mongodb+srv://Utkarsha:okay@cluster0.z5446.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+ useNewUrlParser: true,
+ useCreateIndex: true
+ }).then(() => {
+ console.log("connected");
+ }).catch(err => {
+ console.log("error", err.message);
+ });
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
